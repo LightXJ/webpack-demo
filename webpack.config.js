@@ -1,21 +1,16 @@
 const path = require('path');
 
 module.exports = {
-  mode: "development", 
-  entry: './src/index.js',
+  mode: 'development',
+  entry: {
+    index:  './src/index.js'
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.m?js$/,
-  //       exclude: /node_modules/,
-  //       use: {
-  //         loader: "babel-loader",
-  //       }
-  //     }
-  //   ]
-  // },
+  devtool: "inline-source-map",
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };
