@@ -9,12 +9,20 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '管理输出',
+      title: '开发环境',
     }),
   ],
+  devtool: 'inline-source-map',
+  devServer: {
+    static: './dist'
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    publicPath: '/',
+  },
+  optimization: {
+    runtimeChunk: 'single',
   },
 };
