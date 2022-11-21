@@ -1,14 +1,25 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+  },
   plugins: [
     new HtmlWebpackPlugin({
      title: 'caching',
+     template: path.join(__dirname, "src/index.html"),
+      filename: "index.html",
+      chunks: ["index"],
     }),
-    new WebpackManifestPlugin(options)
+    new WebpackManifestPlugin({
+      generate: (seed, files, entrypoints) => {
+        console.log(entrypoints);
+        return entrypoints;
+      }
+    })
   ],
   output: {
     filename: '[name].[contenthash].js',
@@ -17,6 +28,7 @@ module.exports = {
   },
   devtool: "inline-source-map",
   optimization: {
+    moduleIds: 'deterministic',
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
