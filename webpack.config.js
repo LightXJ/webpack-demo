@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: "development", 
   entry: {
-    index: './src/index.js',
-    print: './src/print.js'
+    index: './src/index.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -14,7 +13,16 @@ module.exports = {
   ],
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist'
+    static: './dist',
+    hot: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   output: {
     filename: '[name].bundle.js',
