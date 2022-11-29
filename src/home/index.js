@@ -1,4 +1,3 @@
-import couter from "./couter";
 import printMe from './print.js';
 import "./style.css"
 
@@ -7,7 +6,7 @@ function component() {
   const btn = document.createElement('button');
 
 
-  element.innerHTML = `Hello ${couter}`
+  element.innerHTML = `Hello Home`
 
   btn.innerHTML = 'Click me and check the console!';
   btn.onclick = printMe;
