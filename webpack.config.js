@@ -5,8 +5,8 @@ const webpack = require('webpack');
 module.exports = {
   mode: "development", 
   entry: {
-    home: ['webpack-hot-middleware/client', './src/home/index.js'],
-    index: ['webpack-hot-middleware/client', './src/index.js']
+    home: ['./src/home/index.js'],
+    index: ['./src/index.js']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -20,8 +20,7 @@ module.exports = {
       title: 'index',
       template: '/src/index.html',
       chunks: ['index']
-    }),
-    new webpack.HotModuleReplacementPlugin(),
+    })
   ],
   devtool: 'inline-source-map',
   // devServer: {
@@ -39,7 +38,6 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
     publicPath: '/',
   },
 };

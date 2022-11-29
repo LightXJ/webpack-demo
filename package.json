@@ -8,7 +8,8 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "webpack serve --open",
-    "server": "node server.js"
+    "server": "node server.js",
+    "koa-server": "node koa-server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,17 +19,19 @@
     "@babel/preset-env": "^7.15.6",
     "babel-loader": "^8.2.2",
     "core-js": "3",
-    "css-loader": "^6.7.2",
-    "html-webpack-plugin": "^5.5.0",
+    "css-loader": "^5",
+    "html-webpack-plugin": "^4",
+    "koa-webpack": "^6.0.0",
     "lodash": "^4.17.21",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.52.1",
+    "style-loader": "^2",
+    "webpack": "^4",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.11.1",
     "webpack-hot-middleware": "^2.25.3"
   },
   "dependencies": {
     "express": "^4.18.2",
+    "koa": "^2.13.4",
     "webpack-dev-middleware": "^5.3.3"
   }
 }
