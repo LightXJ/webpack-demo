@@ -1,7 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+console.log(MiniCssExtractPlugin.loader);
+
+const devMode = process.env.NODE_ENV !== "production";
 module.exports = {
   mode: "development", 
   entry: {
@@ -20,8 +24,11 @@ module.exports = {
       title: 'index',
       template: '/src/index.html',
       chunks: ['index']
+    }),
+    !devMode && new MiniCssExtractPlugin({
+      filename: "[name]x.css",
     })
-  ],
+  ].filter(Boolean),
   devtool: 'inline-source-map',
   // devServer: {
   //   static: './dist',
@@ -31,7 +38,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader, 
+          'css-loader'
+      ],
       },
     ],
   },
